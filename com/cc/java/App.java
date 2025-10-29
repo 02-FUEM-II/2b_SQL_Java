@@ -11,9 +11,9 @@ import java.sql.*;
 public class App 
 {
     // Argumente für Connection-Parameter
-    static String conURL = "jdbc:mysql://ip:3306/mydb";
+    static String conURL = "jdbc:mysql://139.162.146.108:3306/mydb";
     static String usrStr = "remote_user";
-    static String usrPwd = "pass@remote";
+    static String usrPwd = "xAcb12#rem0te!";
 
     static Connection con;
     static Statement stmt;
@@ -35,18 +35,19 @@ public class App
              Statement stmt = con.createStatement();
 
              // Executing the query and storing the result in a ResultSet object
-             ResultSet rs = stmt.executeQuery("SELECT * FROM mydb.employees");
+            //  ResultSet rs = stmt.executeQuery("SELECT * FROM mydb.employees");
+             ResultSet rs = stmt.executeQuery("SELECT * FROM mydb.employees WHERE id = 2");
              System.out.println(rs);
 
             // Iterating through the ResultSet and printing the contents
             while (rs.next()) {
 
                 // fetch
-                String name = rs.getString("name");
-                String surname = rs.getString("surname");
+                String name = rs.getString("first_name");
+                String surname = rs.getString("last_name");
                 int age = rs.getInt("age");
-                int salary = rs.getInt("salary");
-                int employee_id = rs.getInt("employee_id");
+                int salary = rs.getInt("annual_salary");
+                String employee_id = rs.getString("employee_id");
 
                 // print
                 String printStr =   "ID: " + employee_id +
